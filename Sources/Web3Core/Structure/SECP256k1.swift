@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import _secp256k1
+import secp256k1Kit
 
 public struct SECP256K1 {
     public struct UnmarshaledSignature {
