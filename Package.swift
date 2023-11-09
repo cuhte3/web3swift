@@ -16,14 +16,14 @@ let package = Package(
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.5.1")
     ],
     targets: [
-        .target(name: "secp256K1"),
+        .target(name: "_secp256k1"),
         .target(
             name: "Web3Core",
-            dependencies: ["BigInt", "secp256K1", "CryptoSwift"]
+            dependencies: ["BigInt", "_secp256k1", "CryptoSwift"]
         ),
         .target(
             name: "web3swift",
-            dependencies: ["Web3Core", "BigInt", "secp256K1"],
+            dependencies: ["Web3Core", "BigInt", "_secp256k1"],
             resources: [
                 .copy("./Browser/browser.js"),
                 .copy("./Browser/browser.min.js"),
