@@ -23,7 +23,8 @@ let package = Package(
         ),
         .target(
             name: "web3swift",
-            dependencies: ["Web3Core", "BigInt", "_secp256k1"],
+            dependencies: ["Web3Core", "BigInt", "CryptoSwift"],
+            exclude: ["_secp256k1"], // Exclude the conflicting target
             resources: [
                 .copy("./Browser/browser.js"),
                 .copy("./Browser/browser.min.js"),
