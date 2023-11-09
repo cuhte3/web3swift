@@ -13,17 +13,25 @@ let package = Package(
    ],
    dependencies: [
        .package(url: "https://github.com/attaswift/BigInt.git", from: "5.3.0"),
-       .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.5.1")
+       .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.5.1"),
+       .package(url: "https://github.com/GigaBitcoin/secp256k1.swift.git", .exact("0.10.0"))
    ],
    targets: [
-       .target(name: "secp256k1Kit"),
        .target(
            name: "Web3Core",
-           dependencies: ["BigInt", "secp256k1Kit", "CryptoSwift"]
+           dependencies: [
+            "BigInt",
+            .product(name: "secp256k1", package: "secp256k1.swift"),
+            "CryptoSwift"
+           ]
        ),
        .target(
            name: "web3swift",
-           dependencies: ["Web3Core", "BigInt", "secp256k1Kit"],
+           dependencies: [
+            "Web3Core",
+            "BigInt",
+            .product(name: "secp256k1", package: "secp256k1.swift")
+           ],
            resources: [
                .copy("./Browser/browser.js"),
                .copy("./Browser/browser.min.js"),
